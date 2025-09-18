@@ -11,17 +11,17 @@ const familyRanking = [
     "Farm family"
 ];
 
-const parentsStatus = [
-    "Both parents are alive",
-    "Something has happened to one or both parents",
-    "You don't know who your parents are",
-    "You were raised by a foster family",
-    "You were raised by your extended family (aunts/uncles, grandparents, etc.)",
-    "One parent is missing, other is alive",
-    "Both parents missing",
-    "One parent is dead, other is alive",
-    "Both parents dead",
-    "Raised by an AI or corporation"
+const somethingHappenedToParents = [
+    "Your parent(s) died in warfare.",
+    "Your parent(s) died in an accident.",
+    "Your parent(s) were murdered.",
+    "Your parent(s) have amnesia and don’t remember you.",
+    "You never knew your parent(s).",
+    "Your parent(s) are in hiding to protect you.",
+    "You were left with relatives for safekeeping.",
+    "You grew up on the Street and never had parents.",
+    "Your parent(s) gave you up for adoption.",
+    "Your parent(s) sold you for money."
 ];
 
 const familyTragedy = [
@@ -37,36 +37,92 @@ const familyTragedy = [
     "Your family is secretly a powerful faction (but you must keep this hidden)."
 ];
 
-const familyStatus = [
-    "Your family is still together.",
-    "Your family is scattered and you only have contact with some of them.",
-    "Your family is scattered and you are on your own.",
-    "Your family is in hiding to escape enemies.",
-    "Your family lives in luxury, but you are not welcome.",
-    "Your family is in poverty, struggling to survive.",
-    "Your family is powerful and well-connected.",
-    "Your family is respected and honored.",
-    "Your family has fallen on hard times.",
-    "Your family is cursed or haunted by something."
+const childhoodEnvironment = [
+    "Spent on the Street, with no adult supervision.",
+    "Spent in a safe Corporate Suburbia.",
+    "In a Nomad Pack moving from town to town.",
+    "In a decaying, once-upscale neighborhood.",
+    "In a defended Corporate Zone in the central City.",
+    "In the heart of the Combat Zone.",
+    "In a small village or town far from the City.",
+    "In a large arcology city.",
+    "In an aquatic Pirate Pack.",
+    "On a Corporate-controlled Farm or Research Facility."
 ];
 
-// Dice roller helper
+const siblingFeelings = [
+    "dislikes you.",   
+    "likes you.",
+    "is neutral towards you.",
+    "hero worships you.",
+    "hates you."
+];
+
 function d10() {
     return Math.floor(Math.random() * 10);
 }
 
 function generateLifepath() {
+    
     const familyRankingRoll = d10();
-    const parentsStatusRoll = d10();
-    const familyTragedyRoll = d10();
+    const parentsRoll = d10();
     const familyStatusRoll = d10();
+    const familyTragedyRoll = d10();
+    const childhoodEnvironmentRoll = d10();
+    const siblingsRoll = d10();
+    
+    
+    let returnHTML =  `<p><strong>Family Ranking [${familyRankingRoll + 1}]</strong>: ${familyRanking[familyRankingRoll]}</p>`;
+    
+    //Parent Status
+    if (parentsRoll <= 5)
+    {
+        returnHTML += `<p><strong>Parent Status [${parentsRoll + 1}]</strong> Both parents are Alive</p>`;
+    }
+    else
+    {
+        returnHTML += `<p><strong>Parent Status [${parentsRoll + 1}]</strong> ${somethingHappenedToParents[familyTragedyRoll]}</p>`;
+    }
 
-    return `
-        <p><strong>Family Ranking [${familyRankingRoll + 1}]</strong>: ${familyRanking[familyRankingRoll]}</p>
-        <p><strong>Parents' Status [${parentsStatusRoll + 1}]</strong>: ${parentsStatus[parentsStatusRoll]}</p>
-        <p><strong>Family Tragedy [${familyTragedyRoll + 1}]</strong>: ${familyTragedy[familyTragedyRoll]}</p>
-        <p><strong>Family Status [${familyStatusRoll + 1}]</strong>: ${familyStatus[familyStatusRoll]}</p>
-    `;
+    //Family Status
+    if (familyStatusRoll > 5)
+    {
+        returnHTML += `<p><strong>Family Status: [${familyStatusRoll + 1}]</strong> Your family is fine</p>`;
+    }
+    else
+    {
+        returnHTML += `<p><strong>Family Status: [${familyStatusRoll + 1}]</strong> ${familyTragedy[familyTragedyRoll]}</p>`;
+    }
+
+    //Childhood Environment
+    returnHTML += `<p><strong>Childhood Environment: [${childhoodEnvironmentRoll + 1}]</strong> ${childhoodEnvironment[childhoodEnvironmentRoll]}</p>`;
+
+    //Siblings
+    if (siblingsRoll > 6)
+    {
+        returnHTML += `<p><strong>Siblings: [${siblingsRoll + 1}]</strong> You are an Only Child</p>`;
+    }
+    else
+    {
+        returnHTML += `<p><strong>Siblings: [${siblingsRoll + 1}]</strong> You have ${siblingsRoll} sibling(s)</p>`;
+        for (let i = 0; i < siblingsRoll; i++) {
+           returnHTML += generateSibling(i);
+        }
+    }
+    
+    return returnHTML;
+}
+
+function generateSibling(siblingNumber){
+    
+    let genderRoll = d10();
+    let gender = genderRoll % 2 ? "Brother" : "Sister";
+    let olderRoll = d10();
+    let age = olderRoll > 5 ? "An Older" : "A younger";
+    if(olderRoll === 9) age = "A Twin";
+    let attitudeRoll = d10();
+    
+    return `<p><strong>[${siblingNumber}] ${age} ${gender} who ${siblingFeelings[Math.ceil(attitudeRoll/2)]}</p>`;
 }
 
 document.getElementById("rollBtn").addEventListener("click", () => {
