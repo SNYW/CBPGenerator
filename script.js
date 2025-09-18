@@ -393,8 +393,10 @@ const enemyWho = [
     `they're an ex lover`,
     `they're a relative`,
     `you've disliked each other since childhood`,
+    `they're a current employee of yours`
     `they're your current boss`,
     `they're your colleague or partner`,
+    `they're a corporate executive`
     `a member of a Booster Gang`,
     `a government a official`
 ]
