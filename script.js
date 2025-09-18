@@ -477,12 +477,12 @@ function generateBigWinOrLoss(){
 }
 
 function generateLucky(){
-    const roll = d10() + 1;
+    const roll = d10();
 
     switch (roll) {
         case 1:
             let friend = ``;
-            let friendRoll = d10()+1;
+            let friendRoll = d10();
             if (friendRoll <= 4) {
                 friend = `Police Department`;
             } else if (friendRoll <= 7) {
@@ -495,9 +495,9 @@ function generateLucky(){
             
             return `You made a powerful connection in the ${friend}`;
         case 2:
-            return `You received ${(d10()+1)*100} eurodollars from a Financial Windfall`;
+            return `You received ${d10()*100} eurodollars from a Financial Windfall`;
         case 3:
-            return `You received ${(d10()+1)*100} eurodollars from a Big Score on a job`;
+            return `You received ${d10()*100} eurodollars from a Big Score on a job`;
         case 4:
             return `You Found a Sensei. Begin at +2 or add +1 to a Martial Arts skill`;
         case 5:
@@ -518,15 +518,15 @@ function generateLucky(){
 }
 
 function generateDisaster(){
-    let roll = d10() + 1;
-    let secondaryRoll = d10() +1;
+    let roll = d10();
+    let secondaryRoll = d10();
     let secondaryText = ``;
 
     switch (roll) {
         case 1:
-            return `You lost ${(d10()+1)*100} eurodollars. If you can't pay this now, it becomes debt`;
+            return `You lost ${d10()*100} eurodollars. If you can't pay this now, it becomes debt`;
         case 2:
-            return `You were imprisoned or held hostage for ${d10()+1} month(s)`;
+            return `You were imprisoned or held hostage for ${d10()} month(s)`;
         case 3:
             return `Contracted either an illness, or a drug habit. Permanently lose 1 REF`;
         case 4:
@@ -545,9 +545,9 @@ function generateDisaster(){
             if (secondaryRoll <= 4) {
                 secondaryText = `suffered a horrible disfigurement (-4 ATT Permanently)`;
             } else if (secondaryRoll <= 6) {
-                secondaryText = `were hospitalised for ${d10()+1} months`;
+                secondaryText = `were hospitalised for ${d10()} months`;
             } else if (secondaryRoll <= 8) {
-                secondaryText = `lost ${d10()+1} months of memory from that year`;
+                secondaryText = `lost ${d10()} months of memory from that year`;
             } else if (secondaryRoll <= 10) {
                 secondaryText = `have constant nightmares about it (8/10 chance per night)`;
             } else {
