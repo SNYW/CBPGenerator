@@ -319,11 +319,15 @@ function generateLifeEvents(){
     returnHTML += `<p><strong>Age:</strong> ${actualAge}</p>`;
 
     returnHTML += `<h1>Yearly Events</h1>`;
+    let list = document.createElement("ul");
+    
     for (let i = 1; i < ageRolls+1; i++){
         let yearEvents = generateYearEvents();
         if(yearEvents === ``) continue;
         
-        returnHTML += `<li>[${16+i}] ${yearEvents}</li>`;
+        let newListItem = document.createElement("li");
+        newListItem.innerHTML = `<li>[${16+i}] ${yearEvents}</li>`;
+        list.appendChild(newListItem);
     }
     
     let result = document.createElement('div');
@@ -332,6 +336,7 @@ function generateLifeEvents(){
     result.classList.add('result');
 
     result.innerHTML = returnHTML;
+    result.appendChild(list);
     return result;
 }
 
@@ -397,12 +402,12 @@ const enemyWho = [
 const enemyResponse = [
     `go into a murderous killing rage`,
     `go into a murderous killing rage`,
-    `avoid the scum`,
-    `avoid the scum`,
+    `avoid the perpetrator`,
+    `avoid the perpetrator`,
     `backstab them indirectly`,
     `backstab them indirectly`,
-    `ignore the scum`,
-    `ignore the scum`,
+    `ignore the perpetrator`,
+    `ignore the perpetrator`,
     `rip into them verbally`,
     `rip into them verbally`,
 ]
@@ -462,10 +467,68 @@ function generateEnemyWhy(){
 }
 
 function generateEnemy(){
-    return `You made an enemy, ${enemyWho[d10()-1]}. You became enemies because ${generateEnemyWhy()}. If you see each other, you'll ${enemyResponse[d10()-1]}. They ${enemyFriends[d10()-1]}.`;
+    return `You made an enemy, ${enemyWho[d10()-1]}. You became enemies because ${generateEnemyWhy()}. If you see each other, the injured party will ${enemyResponse[d10()-1]}. They ${enemyFriends[d10()-1]}.`;
 }
 
+const romanticTragedies = [
+    `your lover died in an accident`,
+    `your lover mysteriously vanished`,
+    `it simply didn't work out`,
+    `a personal goal or vendetta came between you`,
+    `your lover was kidnapped`,
+    `your lover lost their mind`,
+    `your lover commited suicide`,
+    `your lover was killed in a fight`,
+    `your lover fell for one of your rivals`,
+    `your lover was imprisoned, or exiled`
+];
+
+const relationshipProblems = [
+    `your lover's family/friends hate you`,
+    `your lover's friends/family would do anything to get rid of you`,
+    `your friends/family hate your lover`,
+    `one of you has a romantic rival, vying for a chance`,
+    `you are actively separated`,
+    `you fight constantly`,
+    `as you're professional rivals`,
+    `one of you gets insanely jealous`,
+    `one of you is cheating`,
+    `you have conflicting backgrounds or families`,
+];
+
+const mutualFeelings = [
+    `they still love you`,
+    `you still love them`,
+    `you hate them`,
+    `they hate you`,
+    `you hate each other`,
+    `you're now friends`,
+    `there's no hard feelings`,
+    `you like them, but they hate you`,
+    `they like you, but you hate them`,
+    `you still love each other`,
+];
+
 function generateRomanticInvolvement(){
+    const relationshipRoll = d10();
+    
+    switch (relationshipRoll){
+        case 1:
+        case 2:
+        case 3:
+        case 4:
+            return `You had a romantic encounter, it either ended positively or is ongoing, your choice.`;
+        case 5:
+            return `You had a romance that ended tragically when ${romanticTragedies[d10()-1]}. Now (if they are alive) ${mutualFeelings[d10()-1]}`
+        case 6:
+        case 7:
+            return `You had a problematic relationship, ${relationshipProblems[d10()-1]}.`
+        case 8:
+        case 9:
+        case 10:
+            return `You had a romantic affair that ended very quickly, a hot date.`
+    }
+    
     return "Romantic Involvement";
 }
 
