@@ -122,7 +122,7 @@ function generateSibling(siblingNumber){
     if(olderRoll === 9) age = "A Twin";
     let attitudeRoll = d10();
     
-    return `<p><strong>[${siblingNumber}] ${age} ${gender} who ${siblingFeelings[Math.ceil(attitudeRoll/2)]}</p>`;
+    return `<p><strong>[${siblingNumber}] ${age} ${gender} who ${siblingFeelings[Math.ceil((attitudeRoll+1)/2)]}</p>`;
 }
 
 document.getElementById("rollBtn").addEventListener("click", () => {
