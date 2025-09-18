@@ -122,6 +122,7 @@ function generateFamilyBackground() {
     result.classList.add('result');
 
     result.innerHTML = returnHTML;
+    result.appendChild(list)
     return result;
 }
 
