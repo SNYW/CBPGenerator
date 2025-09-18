@@ -104,9 +104,9 @@ function generateLifepath() {
     }
     else
     {
-        returnHTML += `<p><strong>Siblings: [${siblingsRoll + 1}]</strong> You have ${siblingsRoll} sibling(s)</p>`;
-        for (let i = 0; i < siblingsRoll; i++) {
-           returnHTML += generateSibling(i);
+        returnHTML += `<p><strong>Siblings: [${siblingsRoll + 1}]</strong> You have ${siblingsRoll+1} sibling(s)</p>`;
+        for (let i = 0; i < siblingsRoll+1; i++) {
+           returnHTML += generateSibling(i+1);
         }
     }
     
@@ -118,11 +118,11 @@ function generateSibling(siblingNumber){
     let genderRoll = d10();
     let gender = genderRoll % 2 ? "Brother" : "Sister";
     let olderRoll = d10();
-    let age = olderRoll > 5 ? "An Older" : "A younger";
+    let age = olderRoll > 5 ? "An Older" : "A Younger";
     if(olderRoll === 9) age = "A Twin";
     let attitudeRoll = d10();
     
-    return `<p><strong>[${siblingNumber}] ${age} ${gender} who ${siblingFeelings[Math.ceil((attitudeRoll+1)/2)]}</p>`;
+    return `<li>${age} ${gender} who ${siblingFeelings[Math.ceil((attitudeRoll+1)/2)-1]}</li>`;
 }
 
 document.getElementById("rollBtn").addEventListener("click", () => {

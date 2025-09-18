@@ -12,7 +12,8 @@ body {
 .container-wrapper {
     display: flex;              /* Arrange children horizontally */
     gap: 20px;                  /* Space between containers */
-    align-items: flex-start;    /* Align top edges */
+    align-items: center;    /* Align top edges */
+    flex-direction: column;
 }
 
 .container {
@@ -43,4 +44,5 @@ button:hover {
 #result {
     margin-top: 20px;
     font-size: 18px;
+    text-align: left;
 }
