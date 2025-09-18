@@ -121,6 +121,18 @@ function generateFamilyBackground() {
     return result;
 }
 
+function generateSibling(){
+
+    let genderRoll = d10();
+    let gender = genderRoll % 2 ? "Brother" : "Sister";
+    let olderRoll = d10();
+    let age = olderRoll > 5 ? "An Older" : "A Younger";
+    if(olderRoll === 9) age = "A Twin";
+    let attitudeRoll = d10();
+
+    return `<li>${age} ${gender} who ${siblingFeelings[Math.ceil((attitudeRoll+1)/2)-1]}</li>`;
+}
+
 const clothes = [
     "Biker leathers",
     "Blue jeans",
@@ -183,16 +195,16 @@ function generateStyleAndOrigins() {
     let returnHTML = `<h1>Origins and Personal Style</h1>`;
 
     //Clothes
-    returnHTML +=  `<p><strong>Clothes: </strong>: [${clothesRoll + 1}] ${clothes[clothesRoll]}</p>`;
+    returnHTML +=  `<p><strong>Clothes: </strong>[${clothesRoll + 1}] ${clothes[clothesRoll]}</p>`;
     
     //Hair
-    returnHTML +=  `<p><strong>Hair: </strong>: [${hairRoll + 1}] ${hairstyle[hairRoll]}</p>`;
+    returnHTML +=  `<p><strong>Hair: </strong>[${hairRoll + 1}] ${hairstyle[hairRoll]}</p>`;
 
     //Affectations
-    returnHTML +=  `<p><strong>Affectations: </strong>: [${affectationsRoll + 1}] ${affectations[affectationsRoll]}</p>`;
+    returnHTML +=  `<p><strong>Affectations: </strong>[${affectationsRoll + 1}] ${affectations[affectationsRoll]}</p>`;
 
     //Ethnicity
-    returnHTML +=  `<p><strong>Ethnicity: </strong>: [${ethnicityRoll + 1}] ${ethnicity[ethnicityRoll]}</p>`;
+    returnHTML +=  `<p><strong>Ethnicity: </strong>[${ethnicityRoll + 1}] ${ethnicity[ethnicityRoll]}</p>`;
     
     let result = document.createElement('div');
     result.id = "Style";
@@ -201,18 +213,6 @@ function generateStyleAndOrigins() {
 
     result.innerHTML = returnHTML;
     return result;
-}
-
-function generateSibling(){
-    
-    let genderRoll = d10();
-    let gender = genderRoll % 2 ? "Brother" : "Sister";
-    let olderRoll = d10();
-    let age = olderRoll > 5 ? "An Older" : "A Younger";
-    if(olderRoll === 9) age = "A Twin";
-    let attitudeRoll = d10();
-    
-    return `<li>${age} ${gender} who ${siblingFeelings[Math.ceil((attitudeRoll+1)/2)-1]}</li>`;
 }
 
 document.getElementById("rollBtn").addEventListener("click", () => {
