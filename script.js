@@ -81,7 +81,7 @@ function generateLifepath() {
     }
     else
     {
-        returnHTML += `<p><strong>Parent Status [${parentsRoll + 1}]</strong> ${somethingHappenedToParents[familyTragedyRoll]}</p>`;
+        returnHTML += `<p><strong>Parent Status [${familyTragedyRoll + 1}]</strong> ${somethingHappenedToParents[familyTragedyRoll]}</p>`;
     }
 
     //Family Status
