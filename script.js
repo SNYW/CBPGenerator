@@ -215,16 +215,110 @@ function generateStyleAndOrigins() {
     return result;
 }
 
+const personalityTraits = [
+    "Shy and secretive",
+    "Rebellious, antisocial, violent",
+    "Arrogant, proud, aloof",
+    "Moody, rash, headstrong",
+    "Picky, fussy, nervous",
+    "Stable and serious",
+    "Silly and fluff-headed",
+    "Sneaky and deceptive",
+    "Intellectual and detached",
+    "Friendly and outgoing"
+];
+
+const valuedPerson = [
+    "A parent",
+    "A brother or sister",
+    "A lover",
+    "A friend",
+    "Yourself",
+    "A pet",
+    "A teacher or mentor",
+    "A public figure",
+    "A personal hero",
+    "No one"
+];
+
+const valueMost = [
+    "Money",
+    "Honor",
+    "Your word",
+    "Honesty",
+    "Knowledge",
+    "Vengeance",
+    "Love",
+    "Power",
+    "Family",
+    "Friendship"
+];
+
+const feelAboutPeople = [
+    "Neutral — most people aren't worth the time",
+    "I like almost everyone",
+    "I hate almost everyone",
+    "People are tools. Use them for your own goals, then discard them",
+    "Every person is a valuable individual",
+    "People are obstacles to be destroyed if they cross me",
+    "People are untrustworthy. Don’t depend on anyone",
+    "Wipe ‘em all out and let the cockroaches take over",
+    "People are wonderful!",
+    "People are trash waiting to be burned"
+];
+
+const valuedPossession = [
+    "A weapon",
+    "A tool",
+    "A piece of clothing",
+    "A photograph",
+    "A book or diary",
+    "A recording",
+    "A musical instrument",
+    "A piece of jewelry",
+    "A toy",
+    "A letter"
+];
+
+function generateMotivations(){
+    
+    const personalityRoll = d10();
+    const valuedPersonRoll = d10();
+    const valueMostRoll = d10();
+    const feelAboutPeopleRoll = d10();
+    const valuedPossessionRoll = d10();
+
+    let returnHTML = `<h1>Motivations</h1>`;
+
+    // Motivations
+    returnHTML += `<p><strong>Personality Traits [${personalityRoll + 1}] </strong> ${personalityTraits[personalityRoll]}</p>`;
+    returnHTML += `<p><strong>Valued Person [${valuedPersonRoll + 1}]:</strong> ${valuedPerson[valuedPersonRoll]}</p>`;
+    returnHTML += `<p><strong>Value Most [${valueMostRoll + 1}]:</strong> ${valueMost[valueMostRoll]}</p>`;
+    returnHTML += `<p><strong>Feel About People [${feelAboutPeopleRoll + 1}]:</strong> ${feelAboutPeople[feelAboutPeopleRoll]}</p>`;
+    returnHTML += `<p><strong>Valued Possession [${valuedPossessionRoll + 1}]:</strong> ${valuedPossession[valuedPossessionRoll]}</p>`;
+
+    let result = document.createElement('div');
+    result.id = "Motivations";
+    result.classList.add('container');
+    result.classList.add('result');
+
+    result.innerHTML = returnHTML;
+    return result;
+}
+
 document.getElementById("rollBtn").addEventListener("click", () => {
     let sectionExists = document.getElementById("Style"); 
     
     if (!sectionExists) {
         document.getElementById("wrapper").appendChild(generateStyleAndOrigins());
         document.getElementById("wrapper").appendChild(generateFamilyBackground());
+        document.getElementById("wrapper").appendChild(generateMotivations());
     }else{
         document.getElementById("wrapper").removeChild(document.getElementById("Style"))
         document.getElementById("wrapper").removeChild(document.getElementById("Family"))
+        document.getElementById("wrapper").removeChild(document.getElementById("Motivations"))
         document.getElementById("wrapper").appendChild(generateStyleAndOrigins());
         document.getElementById("wrapper").appendChild(generateFamilyBackground());
+        document.getElementById("wrapper").appendChild(generateMotivations());
     }
 });

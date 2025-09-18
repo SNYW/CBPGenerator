@@ -2,18 +2,16 @@ body {
     font-family: Arial, sans-serif;
     background: #111;
     color: #eee;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
     margin: 0;
+    min-height: 100vh;   /* Allow it to grow taller than viewport */
 }
 
 .container-wrapper {
-    display: flex;              /* Arrange children horizontally */
-    gap: 20px;                  /* Space between containers */
-    align-items: center;    /* Align top edges */
-    flex-direction: column;
+    display: flex;
+    flex-direction: column;  /* Stack vertically */
+    gap: 20px;
+    align-items: center;     /* Center horizontally */
+    padding: 20px;
 }
 
 .container {
@@ -22,8 +20,9 @@ body {
     border: 2px solid #444;
     border-radius: 10px;
     background: #1a1a1a;
-    min-width: 250px;           /* Prevent shrinking too small */
-    flex: 1;                    /* Optional: make both containers equal width */
+    min-width: 250px;
+    width: 100%;
+    max-width: 600px;        /* Optional: limit width */
 }
 
 button {
