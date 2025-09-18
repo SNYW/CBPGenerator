@@ -77,16 +77,16 @@ function generateFamilyBackground() {
     let returnHTML = `<h1>Family Background</h1>`;
     
     //Family Ranking
-    returnHTML +=  `<p><strong>Family Ranking [${familyRankingRoll}]</strong>: ${familyRanking[familyRankingRoll-1]}</p>`;
+    returnHTML +=  `<p><strong>Family Ranking: [${familyRankingRoll}]</strong> ${familyRanking[familyRankingRoll-1]}</p>`;
     
     //Parent Status
     if (parentsRoll <= 5)
     {
-        returnHTML += `<p><strong>Parent Status [${parentsRoll}]</strong> Both parents are Alive</p>`;
+        returnHTML += `<p><strong>Parent Status: [${parentsRoll}]</strong> Both parents are Alive</p>`;
     }
     else
     {
-        returnHTML += `<p><strong>Parent Status [${familyTragedyRoll}]</strong> ${somethingHappenedToParents[familyTragedyRoll-1]}</p>`;
+        returnHTML += `<p><strong>Parent Status: [${familyTragedyRoll}]</strong> ${somethingHappenedToParents[familyTragedyRoll-1]}</p>`;
     }
 
     //Family Status
@@ -109,8 +109,8 @@ function generateFamilyBackground() {
     }
     else
     {
-        returnHTML += `<p><strong>Siblings: [${siblingsRoll}]</strong> You have ${siblingsRoll} sibling(s)</p>`;
-        for (let i = 0; i <= siblingsRoll; i++) {
+        returnHTML += `<p><strong>Siblings:</strong> You have ${siblingsRoll} sibling(s)</p>`;
+        for (let i = 0; i <= siblingsRoll-1; i++) {
            returnHTML += generateSibling();
         }
     }
@@ -133,7 +133,7 @@ function generateSibling(){
     if(olderRoll === 9) age = "A Twin";
     let attitudeRoll = d10();
 
-    return `<li>${age} ${gender} who ${siblingFeelings[Math.ceil((attitudeRoll)/2)]}</li>`;
+    return `<li>${age} ${gender} who ${siblingFeelings[Math.ceil((attitudeRoll)/2)-1]}</li>`;
 }
 
 const clothes = [
@@ -294,11 +294,11 @@ function generateMotivations(){
     let returnHTML = `<h1>Motivations</h1>`;
 
     // Motivations
-    returnHTML += `<p><strong>Personality Traits [${personalityRoll}] </strong> ${personalityTraits[personalityRoll-1]}</p>`;
-    returnHTML += `<p><strong>Valued Person [${valuedPersonRoll}]:</strong> ${valuedPerson[valuedPersonRoll-1]}</p>`;
-    returnHTML += `<p><strong>Value Most [${valueMostRoll}]:</strong> ${valueMost[valueMostRoll-1]}</p>`;
-    returnHTML += `<p><strong>Feel About People [${feelAboutPeopleRoll}]:</strong> ${feelAboutPeople[feelAboutPeopleRoll-1]}</p>`;
-    returnHTML += `<p><strong>Valued Possession [${valuedPossessionRoll}]:</strong> ${valuedPossession[valuedPossessionRoll-1]}</p>`;
+    returnHTML += `<p><strong>Personality Traits: [${personalityRoll}] </strong> ${personalityTraits[personalityRoll-1]}</p>`;
+    returnHTML += `<p><strong>Valued Person: [${valuedPersonRoll}]</strong> ${valuedPerson[valuedPersonRoll-1]}</p>`;
+    returnHTML += `<p><strong>Value Most: [${valueMostRoll}]</strong> ${valueMost[valueMostRoll-1]}</p>`;
+    returnHTML += `<p><strong>Feel About People: [${feelAboutPeopleRoll}]</strong> ${feelAboutPeople[feelAboutPeopleRoll-1]}</p>`;
+    returnHTML += `<p><strong>Valued Possession: [${valuedPossessionRoll}]</strong> ${valuedPossession[valuedPossessionRoll-1]}</p>`;
 
     let result = document.createElement('div');
     result.id = "Motivations";
@@ -462,7 +462,7 @@ function generateEnemyWhy(){
 }
 
 function generateEnemy(){
-    return `You made an enemy, ${enemyWho[d10()-1]}. You became enemies because ${generateEnemyWhy()}. If you see each other, you'll ${enemyResponse[d10()-1]}. They ${enemyFriends[d10()-1]}`;
+    return `You made an enemy, ${enemyWho[d10()-1]}. You became enemies because ${generateEnemyWhy()}. If you see each other, you'll ${enemyResponse[d10()-1]}. They ${enemyFriends[d10()-1]}.`;
 }
 
 function generateRomanticInvolvement(){
@@ -473,7 +473,7 @@ function generateBigWinOrLoss(){
     const roll = d10() + 1;
     const even = roll % 2;
     
-    return even ? generateLucky() : generateDisaster();
+    return even ? generateLucky()+"." : generateDisaster();
 }
 
 function generateLucky(){
