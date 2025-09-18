@@ -1,28 +1,71 @@
 body {
     font-family: Arial, sans-serif;
-    background: #111;
+    background: #0c0e17;
     color: #eee;
     margin: 0;
-    min-height: 100vh;   /* Allow it to grow taller than viewport */
+    min-height: 100vh; 
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+* {
+    box-sizing: border-box;
 }
 
 .container-wrapper {
     display: flex;
-    flex-direction: column;  /* Stack vertically */
+    flex-direction: column;
     gap: 20px;
-    align-items: center;     /* Center horizontally */
-    padding: 20px;
-}
-
-.container {
-    text-align: center;
-    padding: 20px;
-    border: 2px solid #444;
+    align-items: center;
+    text-align: left;
+    padding: 5px;
     border-radius: 10px;
-    background: #1a1a1a;
+    background: #1C1F33;
     min-width: 250px;
     width: 100%;
-    max-width: 600px;        /* Optional: limit width */
+    max-width: 600px;
+}
+
+.container{
+    width: 100%;
+    padding: 16px;
+}
+
+.titleArea{
+    display: flex;
+    flex-direction: column; 
+    gap: 20px;
+    align-items: center; 
+    text-align: center;
+    padding: 20px;
+    min-width: 250px;
+    width: 100%;
+    max-width: 600px;
+}
+
+.sectionTitleParent{
+    margin-left: -3.8%;
+    background: #666370;
+    border-radius: 1px;
+    height: 50px;
+    align-items: center;
+    display: flex;
+    max-width: fit-content;
+    padding-right: 40px;
+}
+
+.sectionTitle{
+    padding-left: 10px;
+    color: white;
+    font-family: 'Aldrich', sans-serif;
+}
+
+.areaTitle{
+    font-size: 50px;
+    font-family: 'Aldrich', sans-serif;
+    margin-bottom: 0;
 }
 
 button {
@@ -34,14 +77,24 @@ button {
     cursor: pointer;
     margin-top: 10px;
     border-radius: 5px;
+    align-self: center;
+    min-height: 50px;
 }
 
 button:hover {
     background: #ff3366;
 }
 
-.result {
-    margin-top: 20px;
-    font-size: 18px;
-    text-align: left;
+.pFlex{
+    display: flex;
+    margin-top: 25px;
+    margin-bottom: 25px;
+}
+
+.strongColumn{
+    min-width: 40%;
+}
+
+li {
+    margin-bottom: 16px;
 }

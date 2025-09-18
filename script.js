@@ -74,42 +74,42 @@ function generateFamilyBackground() {
     const childhoodEnvironmentRoll = d10();
     const siblingsRoll = d10();
 
-    let returnHTML = `<h1>Family Background</h1>`;
+    let returnHTML = `<div class="sectionTitleParent"><h2 class="sectionTitle">Family Background</h2></div>`;
     
     //Family Ranking
-    returnHTML +=  `<p><strong>Family Ranking: [${familyRankingRoll}]</strong> ${familyRanking[familyRankingRoll-1]}</p>`;
+    returnHTML +=  `<p class="pFlex"><strong class="strongColumn">Family Ranking: [${familyRankingRoll}]</strong> ${familyRanking[familyRankingRoll-1]}</p>`;
     
     //Parent Status
     if (parentsRoll <= 5)
     {
-        returnHTML += `<p><strong>Parent Status: [${parentsRoll}]</strong> Both parents are Alive</p>`;
+        returnHTML += `<p class="pFlex"><strong class="strongColumn">Parent Status: [${parentsRoll}]</strong> Both parents are Alive</p>`;
     }
     else
     {
-        returnHTML += `<p><strong>Parent Status: [${familyTragedyRoll}]</strong> ${somethingHappenedToParents[familyTragedyRoll-1]}</p>`;
+        returnHTML += `<p class="pFlex"><strong class="strongColumn">Parent Status: [${familyTragedyRoll}]</strong> ${somethingHappenedToParents[familyTragedyRoll-1]}</p>`;
     }
 
     //Family Status
     if (familyStatusRoll > 5)
     {
-        returnHTML += `<p><strong>Family Status: [${familyStatusRoll}]</strong> Your extended family is fine</p>`;
+        returnHTML += `<p class="pFlex"><strong class="strongColumn">Family Status: [${familyStatusRoll}]</strong> Your extended family is fine</p>`;
     }
     else
     {
-        returnHTML += `<p><strong>Family Status: [${familyStatusRoll}]</strong> ${familyTragedy[familyTragedyRoll-1]}</p>`;
+        returnHTML += `<p class="pFlex"><strong class="strongColumn">Family Status: [${familyStatusRoll}]</strong> ${familyTragedy[familyTragedyRoll-1]}</p>`;
     }
 
     //Childhood Environment
-    returnHTML += `<p><strong>Childhood Environment: [${childhoodEnvironmentRoll}]</strong> ${childhoodEnvironment[childhoodEnvironmentRoll-1]}</p>`;
+    returnHTML += `<p class="pFlex"><strong class="strongColumn">Childhood Environment: [${childhoodEnvironmentRoll}]</strong> ${childhoodEnvironment[childhoodEnvironmentRoll-1]}</p>`;
 
     //Siblings
     if (siblingsRoll > 6)
     {
-        returnHTML += `<p><strong>Siblings: [${siblingsRoll}]</strong> You are an Only Child</p>`;
+        returnHTML += `<p class="pFlex"><strong class="strongColumn">Siblings:</strong> You are an Only Child</p>`;
     }
     else
     {
-        returnHTML += `<p><strong>Siblings:</strong> You have ${siblingsRoll} sibling(s)</p>`;
+        returnHTML += `<p class="pFlex"><strong class="strongColumn">Siblings:</strong> You have ${siblingsRoll} sibling(s)</p>`;
         for (let i = 0; i <= siblingsRoll-1; i++) {
            returnHTML += generateSibling();
         }
@@ -195,19 +195,19 @@ function generateStyleAndOrigins() {
     const affectationsRoll = d10();
     const ethnicityRoll = d10();
 
-    let returnHTML = `<h1>Origins and Personal Style</h1>`;
+    let returnHTML = `<div class="sectionTitleParent"><h2 class="sectionTitle">Origins and Personal Style</h2></div>`;
 
     //Clothes
-    returnHTML +=  `<p><strong>Clothes: </strong>[${clothesRoll}] ${clothes[clothesRoll-1]}</p>`;
+    returnHTML +=  `<p class="pFlex"><strong class="strongColumn">Clothes: </strong>[${clothesRoll}] ${clothes[clothesRoll-1]}</p>`;
     
     //Hair
-    returnHTML +=  `<p><strong>Hair: </strong>[${hairRoll}] ${hairstyle[hairRoll-1]}</p>`;
+    returnHTML +=  `<p class="pFlex"><strong class="strongColumn">Hair: </strong>[${hairRoll}] ${hairstyle[hairRoll-1]}</p>`;
 
     //Affectations
-    returnHTML +=  `<p><strong>Affectations: </strong>[${affectationsRoll}] ${affectations[affectationsRoll-1]}</p>`;
+    returnHTML +=  `<p class="pFlex"><strong class="strongColumn">Affectations: </strong>[${affectationsRoll}] ${affectations[affectationsRoll-1]}</p>`;
 
     //Ethnicity
-    returnHTML +=  `<p><strong>Ethnicity: </strong>[${ethnicityRoll}] ${ethnicity[ethnicityRoll-1]}</p>`;
+    returnHTML +=  `<p class="pFlex"><strong class="strongColumn">Ethnicity: </strong>[${ethnicityRoll}] ${ethnicity[ethnicityRoll-1]}</p>`;
     
     let result = document.createElement('div');
     result.id = "Style";
@@ -291,14 +291,14 @@ function generateMotivations(){
     const feelAboutPeopleRoll = d10();
     const valuedPossessionRoll = d10();
 
-    let returnHTML = `<h1>Motivations</h1>`;
+    let returnHTML = `<div class="sectionTitleParent"><h2 class="sectionTitle">Motivations</h2></div>`;
 
     // Motivations
-    returnHTML += `<p><strong>Personality Traits: [${personalityRoll}] </strong> ${personalityTraits[personalityRoll-1]}</p>`;
-    returnHTML += `<p><strong>Valued Person: [${valuedPersonRoll}]</strong> ${valuedPerson[valuedPersonRoll-1]}</p>`;
-    returnHTML += `<p><strong>Value Most: [${valueMostRoll}]</strong> ${valueMost[valueMostRoll-1]}</p>`;
-    returnHTML += `<p><strong>Feel About People: [${feelAboutPeopleRoll}]</strong> ${feelAboutPeople[feelAboutPeopleRoll-1]}</p>`;
-    returnHTML += `<p><strong>Valued Possession: [${valuedPossessionRoll}]</strong> ${valuedPossession[valuedPossessionRoll-1]}</p>`;
+    returnHTML += `<p class="pFlex"><strong class="strongColumn">Personality Traits: [${personalityRoll}] </strong> ${personalityTraits[personalityRoll-1]}</p>`;
+    returnHTML += `<p class="pFlex"><strong class="strongColumn">Valued Person: [${valuedPersonRoll}]</strong> ${valuedPerson[valuedPersonRoll-1]}</p>`;
+    returnHTML += `<p class="pFlex"><strong class="strongColumn">Value Most: [${valueMostRoll}]</strong> ${valueMost[valueMostRoll-1]}</p>`;
+    returnHTML += `<p class="pFlex"><strong class="strongColumn">Feel About People: [${feelAboutPeopleRoll}]</strong> ${feelAboutPeople[feelAboutPeopleRoll-1]}</p>`;
+    returnHTML += `<p class="pFlex"><strong class="strongColumn">Valued Possession: [${valuedPossessionRoll}]</strong> ${valuedPossession[valuedPossessionRoll-1]}</p>`;
 
     let result = document.createElement('div');
     result.id = "Motivations";
@@ -314,11 +314,11 @@ function generateLifeEvents(){
     const ageRolls = d6() + d6();
     const actualAge = ageRolls+16;
 
-    let returnHTML = `<h1>Life Events</h1>`;
+    let returnHTML = `<div class="sectionTitleParent"><h2 class="sectionTitle">Life Events</h2></div>`;
 
-    returnHTML += `<p><strong>Age:</strong> ${actualAge}</p>`;
+    returnHTML += `<p class="pFlex"><strong>Age:</strong> ${actualAge}</p>`;
 
-    returnHTML += `<h1>Yearly Events</h1>`;
+    returnHTML += `<h3>Yearly Events</h3>`;
     let list = document.createElement("ul");
     
     for (let i = 1; i < ageRolls+1; i++){
@@ -690,22 +690,27 @@ function generateDisaster(){
 
 document.getElementById("rollBtn").addEventListener("click", () => {
     let sectionExists = document.getElementById("Style"); 
+    let wrapper = document.getElementById("wrapper");
     
+    wrapper.classList.add("container-wrapper")
     if (!sectionExists) {
         generateNewLifePath()
         
     }else{
-        document.getElementById("wrapper").removeChild(document.getElementById("Style"));
-        document.getElementById("wrapper").removeChild(document.getElementById("Family"));
-        document.getElementById("wrapper").removeChild(document.getElementById("Motivations"));
-        document.getElementById("wrapper").removeChild(document.getElementById("LifeEvents"));
+        wrapper.removeChild(document.getElementById("Style"));
+        wrapper.removeChild(document.getElementById("Family"));
+        wrapper.removeChild(document.getElementById("Motivations"));
+        wrapper.removeChild(document.getElementById("LifeEvents"));
         generateNewLifePath();
     }
 });
 
 function generateNewLifePath(){
-    document.getElementById("wrapper").appendChild(generateStyleAndOrigins());
-    document.getElementById("wrapper").appendChild(generateFamilyBackground());
-    document.getElementById("wrapper").appendChild(generateMotivations());
-    document.getElementById("wrapper").appendChild(generateLifeEvents());
+    let wrapper = document.getElementById("wrapper");
+    
+    wrapper.innerHTML = `<h2 class="areaTitle">Lifepath</h2>`;
+    wrapper.appendChild(generateStyleAndOrigins());
+    wrapper.appendChild(generateFamilyBackground());
+    wrapper.appendChild(generateMotivations());
+    wrapper.appendChild(generateLifeEvents());
 }
