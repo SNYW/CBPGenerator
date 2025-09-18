@@ -103,6 +103,7 @@ function generateFamilyBackground() {
     returnHTML += `<p class="pFlex"><strong class="strongColumn">Environment: [${childhoodEnvironmentRoll}]</strong> ${childhoodEnvironment[childhoodEnvironmentRoll-1]}</p>`;
 
     //Siblings
+    let list = document.createElement("ul");
     if (siblingsRoll > 7)
     {
         returnHTML += `<p class="pFlex"><strong class="strongColumn">Siblings:</strong> You are an Only Child</p>`;
@@ -111,7 +112,7 @@ function generateFamilyBackground() {
     {
         returnHTML += `<p class="pFlex"><strong class="strongColumn">Siblings:</strong> You have ${siblingsRoll} sibling(s)</p>`;
         for (let i = 0; i <= siblingsRoll-1; i++) {
-           returnHTML += generateSibling();
+            list.appendChild(generateSibling());
         }
     }
 
@@ -133,7 +134,9 @@ function generateSibling(){
     if(olderRoll === 9) age = "A Twin";
     let attitudeRoll = d10();
 
-    return `<li>${age} ${gender} who ${siblingFeelings[Math.ceil((attitudeRoll)/2)-1]}</li>`;
+    let newLi = document.createElement("li");
+    newLi.innerHTML += `<li>${age} ${gender} who ${siblingFeelings[Math.ceil((attitudeRoll)/2)-1]}</li>`;
+    return newLi;
 }
 
 const clothes = [

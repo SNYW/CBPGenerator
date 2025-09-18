@@ -26,6 +26,12 @@ body {
     min-width: 250px;
     width: 100%;
     max-width: 600px;
+    
+    @media (max-width: 550px) {
+        gap: 0px;
+    }
+
+
 }
 
 .container{
@@ -90,10 +96,20 @@ button:hover {
     margin-top: 25px;
     margin-bottom: 30px;
     margin-left: -2.3%;
+
+    @media (max-width: 550px) {
+        flex-direction: column;
+        gap: 8px;
+        margin: 16px 0;
+    }
 }
 
 .strongColumn{
     min-width: 40%;
+}
+
+ul {
+    padding-left: 16px;
 }
 
 li {
