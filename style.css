@@ -6,6 +6,13 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
+    margin: 0;
+}
+
+.container-wrapper {
+    display: flex;              /* Arrange children horizontally */
+    gap: 20px;                  /* Space between containers */
+    align-items: flex-start;    /* Align top edges */
 }
 
 .container {
@@ -14,6 +21,8 @@ body {
     border: 2px solid #444;
     border-radius: 10px;
     background: #1a1a1a;
+    min-width: 250px;           /* Prevent shrinking too small */
+    flex: 1;                    /* Optional: make both containers equal width */
 }
 
 button {
