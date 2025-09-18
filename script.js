@@ -106,14 +106,14 @@ function generateLifepath() {
     {
         returnHTML += `<p><strong>Siblings: [${siblingsRoll + 1}]</strong> You have ${siblingsRoll+1} sibling(s)</p>`;
         for (let i = 0; i < siblingsRoll+1; i++) {
-           returnHTML += generateSibling(i+1);
+           returnHTML += generateSibling();
         }
     }
     
     return returnHTML;
 }
 
-function generateSibling(siblingNumber){
+function generateSibling(){
     
     let genderRoll = d10();
     let gender = genderRoll % 2 ? "Brother" : "Sister";
