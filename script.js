@@ -56,10 +56,6 @@ function d10() {
 }
 
 function generateLifepath() {
-    const family = familyBackground[d10()];
-    const motivation = motivations[d10()];
-    
-    
     const parentStatusRoll = d10();
     const familyTragedyRoll = d10();
     const familyStatusRoll = d10();
