@@ -350,7 +350,119 @@ function generateYearEvents() {
 }
 
 function generateFriendsOrEnemies(){
-    return "Friends or Enemies";
+    return Math.random() > 0.5 ? generateFriend() : generateEnemy();
+}
+
+function generateFriend(){
+    const friendRoll = d10();
+    const gender = friendRoll % 2;
+    let secondaryText = ``;
+    
+    switch (friendRoll){
+        case 1:
+            secondaryText = `they're like a big ${gender ? `brother` : `sister`} to you`; break;
+        case 2:
+            secondaryText = `they're like a kid ${gender ? `brother` : `sister`} to you`; break;
+        case 3:
+            secondaryText = `they're a teacher or mentor`; break;
+        case 4:
+            secondaryText = `they're a partner or co-worker`; break;
+        case 5:
+            secondaryText = `they're an old lover`; break;
+        case 6:
+            secondaryText = `they're an old enemy`; break;
+        case 7:
+            secondaryText = `they're like a foster parent to you`; break;
+        case 8:
+            secondaryText = `they're a relative`; break;
+        case 9:
+            secondaryText = `someone you've known from childhood`; break;
+        case 10:
+            secondaryText = `you met through common interests`; break;
+    }
+    return `You made a friend, ${secondaryText}.`;
+}
+
+const enemyWho = [
+    `they used to be a friend`,
+    `they're an ex lover`,
+    `they're a relative`,
+    `you've disliked each other since childhood`,
+    `they're your current boss`,
+    `they're your colleague or partner`,
+    `a member of a Booster Gang`,
+    `a government a official`
+]
+
+const enemyResponse = [
+    `go into a murderous killing rage`,
+    `go into a murderous killing rage`,
+    `avoid the scum`,
+    `avoid the scum`,
+    `backstab them indirectly`,
+    `backstab them indirectly`,
+    `ignore the scum`,
+    `ignore the scum`,
+    `rip into them verbally`,
+    `rip into them verbally`,
+]
+
+const enemyFriends = [
+    `work alone`,
+    `work alone`,
+    `work alone`,
+    `have a few friends`,
+    `have a few friends`,
+    `are a gang member`,
+    `are a gang member`,
+    `have the backing of a small corporation`,
+    `have the backing of a large corporation`,
+    `have the backing of an entire government agency`,
+]
+
+function generateEnemyWhy(){
+    const whyRoll = d10();
+    const you = whyRoll % 2 ? `you` : `they`;
+    const them = whyRoll % 2? `them` : `you`;
+    const their = whyRoll % 2? `their` : `your`;
+    
+    switch (whyRoll){
+        case 1:
+            return `${you} caused ${them} to lose face or status`;
+        case 2:
+            return `${you} caused ${them} to lose a lover`;
+        case 3:
+            return `${you} majorly humiliated ${them}`;
+        case 4:
+            return `${you} accused ${them} of a serious personal flaw`
+        case 5:
+            let injuryRoll = d6();
+            let injury = ``;
+            if(injuryRoll <= 2){
+                injury = 'the loss of an eye'
+            }else if(injuryRoll <= 4){
+                injury = 'the loss of an arm'
+            }else if(injuryRoll <= 6){
+                injury = 'serious permanent scarring'
+            }
+            
+            return `${you} physically disfigured ${them}. Causing ${injury}`
+        case 6:
+            return `${you} deserted or betrayed ${them}`
+        case 7:
+            return `${you} turned down a job or romantic offer from ${them}`
+        case 8:
+            return `you just don't like each other`
+        case 9:
+            return `they're a romantic rival`
+        case 10:
+            return `${you} foiled one of ${their} plans`
+       
+    }
+}
+
+function generateEnemy(){
+    return `You made an enemy, ${enemyWho[d10()-1]}. You became enemies because ${generateEnemyWhy()}. If you see each other, you'll ${enemyResponse[d10()-1]}. They ${enemyFriends[d10()-1]}`;
 }
 
 function generateRomanticInvolvement(){
