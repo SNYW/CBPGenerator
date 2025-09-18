@@ -404,12 +404,12 @@ const enemyResponse = [
     `go into a murderous killing rage`,
     `avoid the perpetrator`,
     `avoid the perpetrator`,
-    `backstab them indirectly`,
-    `backstab them indirectly`,
+    `backstab the perpetrator indirectly`,
+    `backstab the perpetrator indirectly`,
     `ignore the perpetrator`,
     `ignore the perpetrator`,
-    `rip into them verbally`,
-    `rip into them verbally`,
+    `rip into the perpetrator verbally`,
+    `rip into the perpetrator verbally`,
 ]
 
 const enemyFriends = [
