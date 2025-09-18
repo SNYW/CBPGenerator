@@ -41,7 +41,7 @@ button:hover {
     background: #ff3366;
 }
 
-#result {
+.result {
     margin-top: 20px;
     font-size: 18px;
     text-align: left;

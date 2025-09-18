@@ -126,5 +126,15 @@ function generateSibling(siblingNumber){
 }
 
 document.getElementById("rollBtn").addEventListener("click", () => {
-    document.getElementById("result").innerHTML = generateLifepath();
+    let result = document.getElementById("result"); 
+
+    if (!result) {
+        result = document.createElement('div');
+        result.id = "result";                
+        result.classList.add('container');   
+        result.classList.add('result');   
+        document.getElementById("wrapper").appendChild(result);
+    }
+
+    result.innerHTML = generateLifepath();
 });
