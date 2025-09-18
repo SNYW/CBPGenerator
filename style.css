@@ -88,7 +88,8 @@ button:hover {
 .pFlex{
     display: flex;
     margin-top: 25px;
-    margin-bottom: 25px;
+    margin-bottom: 30px;
+    margin-left: -2.3%;
 }
 
 .strongColumn{

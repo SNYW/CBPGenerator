@@ -100,10 +100,10 @@ function generateFamilyBackground() {
     }
 
     //Childhood Environment
-    returnHTML += `<p class="pFlex"><strong class="strongColumn">Childhood Environment: [${childhoodEnvironmentRoll}]</strong> ${childhoodEnvironment[childhoodEnvironmentRoll-1]}</p>`;
+    returnHTML += `<p class="pFlex"><strong class="strongColumn">Environment: [${childhoodEnvironmentRoll}]</strong> ${childhoodEnvironment[childhoodEnvironmentRoll-1]}</p>`;
 
     //Siblings
-    if (siblingsRoll > 6)
+    if (siblingsRoll > 7)
     {
         returnHTML += `<p class="pFlex"><strong class="strongColumn">Siblings:</strong> You are an Only Child</p>`;
     }
@@ -198,16 +198,16 @@ function generateStyleAndOrigins() {
     let returnHTML = `<div class="sectionTitleParent"><h2 class="sectionTitle">Origins and Personal Style</h2></div>`;
 
     //Clothes
-    returnHTML +=  `<p class="pFlex"><strong class="strongColumn">Clothes: </strong>[${clothesRoll}] ${clothes[clothesRoll-1]}</p>`;
+    returnHTML +=  `<p class="pFlex"><strong class="strongColumn">Clothes: [${clothesRoll}]</strong>${clothes[clothesRoll-1]}</p>`;
     
     //Hair
-    returnHTML +=  `<p class="pFlex"><strong class="strongColumn">Hair: </strong>[${hairRoll}] ${hairstyle[hairRoll-1]}</p>`;
+    returnHTML +=  `<p class="pFlex"><strong class="strongColumn">Hair: [${hairRoll}]</strong>${hairstyle[hairRoll-1]}</p>`;
 
     //Affectations
-    returnHTML +=  `<p class="pFlex"><strong class="strongColumn">Affectations: </strong>[${affectationsRoll}] ${affectations[affectationsRoll-1]}</p>`;
+    returnHTML +=  `<p class="pFlex"><strong class="strongColumn">Affectations: [${affectationsRoll}]</strong>${affectations[affectationsRoll-1]}</p>`;
 
     //Ethnicity
-    returnHTML +=  `<p class="pFlex"><strong class="strongColumn">Ethnicity: </strong>[${ethnicityRoll}] ${ethnicity[ethnicityRoll-1]}</p>`;
+    returnHTML +=  `<p class="pFlex"><strong class="strongColumn">Ethnicity: [${ethnicityRoll}]</strong> ${ethnicity[ethnicityRoll-1]}</p>`;
     
     let result = document.createElement('div');
     result.id = "Style";
