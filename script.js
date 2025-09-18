@@ -62,7 +62,7 @@ function d10() {
     return Math.floor(Math.random() * 10);
 }
 
-function generateLifepath() {
+function generateFamilyBackground() {
     
     const familyRankingRoll = d10();
     const parentsRoll = d10();
@@ -70,9 +70,11 @@ function generateLifepath() {
     const familyTragedyRoll = d10();
     const childhoodEnvironmentRoll = d10();
     const siblingsRoll = d10();
+
+    let returnHTML = `<h1>Family Background</h1>`;
     
-    
-    let returnHTML =  `<p><strong>Family Ranking [${familyRankingRoll + 1}]</strong>: ${familyRanking[familyRankingRoll]}</p>`;
+    //Family Ranking
+    returnHTML +=  `<p><strong>Family Ranking [${familyRankingRoll + 1}]</strong>: ${familyRanking[familyRankingRoll]}</p>`;
     
     //Parent Status
     if (parentsRoll <= 5)
@@ -109,8 +111,96 @@ function generateLifepath() {
            returnHTML += generateSibling();
         }
     }
+
+    let result = document.createElement('div');
+    result.id = "Family";
+    result.classList.add('container');
+    result.classList.add('result');
+
+    result.innerHTML = returnHTML;
+    return result;
+}
+
+const clothes = [
+    "Biker leathers",
+    "Blue jeans",
+    "Corporate suits",
+    "Jumpsuits",
+    "Miniskirts",
+    "High fashion",
+    "Cammos",
+    "Normal clothes",
+    "Nude",
+    "Bag lady chic"
+];
+
+const hairstyle = [
+    "Mohawk",
+    "Long & ratty",
+    "Short & spiked",
+    "Wild & all over",
+    "Bald",
+    "Striped",
+    "Tinted",
+    "Neat, short",
+    "Short, curly",
+    "Long, straight"
+];
+
+const affectations = [
+    "Tattoos",
+    "Mirrorshades",
+    "Ritual scars",
+    "Spiked gloves",
+    "Nose rings",
+    "Earrings",
+    "Long fingernails",
+    "Spike-heeled boots",
+    "Weird contact lenses",
+    "Fingerless gloves"
+];
+
+const ethnicity = [
+    "Anglo-American (Language: English)",
+    "African (Language: Bantu, Fante, or others)",
+    "Japanese/Korean (Language: Japanese or Korean)",
+    "Central European/Soviet (Language: Russian, Polish, or others)",
+    "Pacific Islander (Language: Polynesian, Micronesian, or others)",
+    "Chinese/Southeast Asian (Language: Mandarin, Cantonese, or others)",
+    "Black American (Language: English, Blackfolk slang)",
+    "Hispanic American (Language: Spanish)",
+    "Central/South American (Language: Spanish or Portuguese)",
+    "European (Language: French, German, Spanish, or others)"
+];
+
+function generateStyleAndOrigins() {
+
+    const clothesRoll = d10();
+    const hairRoll = d10();
+    const affectationsRoll = d10();
+    const ethnicityRoll = d10();
+
+    let returnHTML = `<h1>Origins and Personal Style</h1>`;
+
+    //Clothes
+    returnHTML +=  `<p><strong>Clothes: </strong>: [${clothesRoll + 1}] ${clothes[clothesRoll]}</p>`;
     
-    return returnHTML;
+    //Hair
+    returnHTML +=  `<p><strong>Hair: </strong>: [${hairRoll + 1}] ${hairstyle[hairRoll]}</p>`;
+
+    //Affectations
+    returnHTML +=  `<p><strong>Affectations: </strong>: [${affectationsRoll + 1}] ${affectations[affectationsRoll]}</p>`;
+
+    //Ethnicity
+    returnHTML +=  `<p><strong>Ethnicity: </strong>: [${ethnicityRoll + 1}] ${ethnicity[ethnicityRoll]}</p>`;
+    
+    let result = document.createElement('div');
+    result.id = "Style";
+    result.classList.add('container');
+    result.classList.add('result');
+
+    result.innerHTML = returnHTML;
+    return result;
 }
 
 function generateSibling(){
@@ -126,15 +216,15 @@ function generateSibling(){
 }
 
 document.getElementById("rollBtn").addEventListener("click", () => {
-    let result = document.getElementById("result"); 
-
-    if (!result) {
-        result = document.createElement('div');
-        result.id = "result";                
-        result.classList.add('container');   
-        result.classList.add('result');   
-        document.getElementById("wrapper").appendChild(result);
+    let sectionExists = document.getElementById("Style"); 
+    
+    if (!sectionExists) {
+        document.getElementById("wrapper").appendChild(generateStyleAndOrigins());
+        document.getElementById("wrapper").appendChild(generateFamilyBackground());
+    }else{
+        document.getElementById("wrapper").removeChild(document.getElementById("Style"))
+        document.getElementById("wrapper").removeChild(document.getElementById("Family"))
+        document.getElementById("wrapper").appendChild(generateStyleAndOrigins());
+        document.getElementById("wrapper").appendChild(generateFamilyBackground());
     }
-
-    result.innerHTML = generateLifepath();
 });
