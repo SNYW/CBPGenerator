@@ -59,7 +59,10 @@ const siblingFeelings = [
 ];
 
 function d10() {
-    return Math.floor(Math.random() * 10);
+    return Math.floor(Math.random() * 10)+1;
+}
+function d6() {
+    return Math.floor(Math.random() * 6)+1;
 }
 
 function generateFamilyBackground() {
@@ -74,40 +77,40 @@ function generateFamilyBackground() {
     let returnHTML = `<h1>Family Background</h1>`;
     
     //Family Ranking
-    returnHTML +=  `<p><strong>Family Ranking [${familyRankingRoll + 1}]</strong>: ${familyRanking[familyRankingRoll]}</p>`;
+    returnHTML +=  `<p><strong>Family Ranking [${familyRankingRoll}]</strong>: ${familyRanking[familyRankingRoll-1]}</p>`;
     
     //Parent Status
     if (parentsRoll <= 5)
     {
-        returnHTML += `<p><strong>Parent Status [${parentsRoll + 1}]</strong> Both parents are Alive</p>`;
+        returnHTML += `<p><strong>Parent Status [${parentsRoll}]</strong> Both parents are Alive</p>`;
     }
     else
     {
-        returnHTML += `<p><strong>Parent Status [${familyTragedyRoll + 1}]</strong> ${somethingHappenedToParents[familyTragedyRoll]}</p>`;
+        returnHTML += `<p><strong>Parent Status [${familyTragedyRoll}]</strong> ${somethingHappenedToParents[familyTragedyRoll-1]}</p>`;
     }
 
     //Family Status
     if (familyStatusRoll > 5)
     {
-        returnHTML += `<p><strong>Family Status: [${familyStatusRoll + 1}]</strong> Your family is fine</p>`;
+        returnHTML += `<p><strong>Family Status: [${familyStatusRoll}]</strong> Your extended family is fine</p>`;
     }
     else
     {
-        returnHTML += `<p><strong>Family Status: [${familyStatusRoll + 1}]</strong> ${familyTragedy[familyTragedyRoll]}</p>`;
+        returnHTML += `<p><strong>Family Status: [${familyStatusRoll}]</strong> ${familyTragedy[familyTragedyRoll-1]}</p>`;
     }
 
     //Childhood Environment
-    returnHTML += `<p><strong>Childhood Environment: [${childhoodEnvironmentRoll + 1}]</strong> ${childhoodEnvironment[childhoodEnvironmentRoll]}</p>`;
+    returnHTML += `<p><strong>Childhood Environment: [${childhoodEnvironmentRoll}]</strong> ${childhoodEnvironment[childhoodEnvironmentRoll-1]}</p>`;
 
     //Siblings
     if (siblingsRoll > 6)
     {
-        returnHTML += `<p><strong>Siblings: [${siblingsRoll + 1}]</strong> You are an Only Child</p>`;
+        returnHTML += `<p><strong>Siblings: [${siblingsRoll}]</strong> You are an Only Child</p>`;
     }
     else
     {
-        returnHTML += `<p><strong>Siblings: [${siblingsRoll + 1}]</strong> You have ${siblingsRoll+1} sibling(s)</p>`;
-        for (let i = 0; i < siblingsRoll+1; i++) {
+        returnHTML += `<p><strong>Siblings: [${siblingsRoll}]</strong> You have ${siblingsRoll} sibling(s)</p>`;
+        for (let i = 0; i <= siblingsRoll; i++) {
            returnHTML += generateSibling();
         }
     }
@@ -130,7 +133,7 @@ function generateSibling(){
     if(olderRoll === 9) age = "A Twin";
     let attitudeRoll = d10();
 
-    return `<li>${age} ${gender} who ${siblingFeelings[Math.ceil((attitudeRoll+1)/2)-1]}</li>`;
+    return `<li>${age} ${gender} who ${siblingFeelings[Math.ceil((attitudeRoll)/2)]}</li>`;
 }
 
 const clothes = [
@@ -195,16 +198,16 @@ function generateStyleAndOrigins() {
     let returnHTML = `<h1>Origins and Personal Style</h1>`;
 
     //Clothes
-    returnHTML +=  `<p><strong>Clothes: </strong>[${clothesRoll + 1}] ${clothes[clothesRoll]}</p>`;
+    returnHTML +=  `<p><strong>Clothes: </strong>[${clothesRoll}] ${clothes[clothesRoll-1]}</p>`;
     
     //Hair
-    returnHTML +=  `<p><strong>Hair: </strong>[${hairRoll + 1}] ${hairstyle[hairRoll]}</p>`;
+    returnHTML +=  `<p><strong>Hair: </strong>[${hairRoll}] ${hairstyle[hairRoll-1]}</p>`;
 
     //Affectations
-    returnHTML +=  `<p><strong>Affectations: </strong>[${affectationsRoll + 1}] ${affectations[affectationsRoll]}</p>`;
+    returnHTML +=  `<p><strong>Affectations: </strong>[${affectationsRoll}] ${affectations[affectationsRoll-1]}</p>`;
 
     //Ethnicity
-    returnHTML +=  `<p><strong>Ethnicity: </strong>[${ethnicityRoll + 1}] ${ethnicity[ethnicityRoll]}</p>`;
+    returnHTML +=  `<p><strong>Ethnicity: </strong>[${ethnicityRoll}] ${ethnicity[ethnicityRoll-1]}</p>`;
     
     let result = document.createElement('div');
     result.id = "Style";
@@ -291,11 +294,11 @@ function generateMotivations(){
     let returnHTML = `<h1>Motivations</h1>`;
 
     // Motivations
-    returnHTML += `<p><strong>Personality Traits [${personalityRoll + 1}] </strong> ${personalityTraits[personalityRoll]}</p>`;
-    returnHTML += `<p><strong>Valued Person [${valuedPersonRoll + 1}]:</strong> ${valuedPerson[valuedPersonRoll]}</p>`;
-    returnHTML += `<p><strong>Value Most [${valueMostRoll + 1}]:</strong> ${valueMost[valueMostRoll]}</p>`;
-    returnHTML += `<p><strong>Feel About People [${feelAboutPeopleRoll + 1}]:</strong> ${feelAboutPeople[feelAboutPeopleRoll]}</p>`;
-    returnHTML += `<p><strong>Valued Possession [${valuedPossessionRoll + 1}]:</strong> ${valuedPossession[valuedPossessionRoll]}</p>`;
+    returnHTML += `<p><strong>Personality Traits [${personalityRoll}] </strong> ${personalityTraits[personalityRoll-1]}</p>`;
+    returnHTML += `<p><strong>Valued Person [${valuedPersonRoll}]:</strong> ${valuedPerson[valuedPersonRoll-1]}</p>`;
+    returnHTML += `<p><strong>Value Most [${valueMostRoll}]:</strong> ${valueMost[valueMostRoll-1]}</p>`;
+    returnHTML += `<p><strong>Feel About People [${feelAboutPeopleRoll}]:</strong> ${feelAboutPeople[feelAboutPeopleRoll-1]}</p>`;
+    returnHTML += `<p><strong>Valued Possession [${valuedPossessionRoll}]:</strong> ${valuedPossession[valuedPossessionRoll-1]}</p>`;
 
     let result = document.createElement('div');
     result.id = "Motivations";
@@ -306,19 +309,226 @@ function generateMotivations(){
     return result;
 }
 
+function generateLifeEvents(){
+
+    const ageRolls = d6() + d6();
+    const actualAge = ageRolls+16;
+
+    let returnHTML = `<h1>Life Events</h1>`;
+
+    returnHTML += `<p><strong>Age:</strong> ${actualAge}</p>`;
+
+    returnHTML += `<h1>Yearly Events</h1>`;
+    for (let i = 1; i < ageRolls+1; i++){
+        let yearEvents = generateYearEvents();
+        if(yearEvents === ``) continue;
+        
+        returnHTML += `<li>[${16+i}] ${yearEvents}</li>`;
+    }
+    
+    let result = document.createElement('div');
+    result.id = "LifeEvents";
+    result.classList.add('container');
+    result.classList.add('result');
+
+    result.innerHTML = returnHTML;
+    return result;
+}
+
+function generateYearEvents() {
+    const yearRoll = d10();
+
+    if (yearRoll <= 4) {
+       return generateBigWinOrLoss();
+    } else if (yearRoll <= 6) {
+       return generateFriendsOrEnemies();
+    } else if (yearRoll <= 8) {
+       return generateRomanticInvolvement();
+    } else {
+        return ``;
+    }
+}
+
+function generateFriendsOrEnemies(){
+    return "Friends or Enemies";
+}
+
+function generateRomanticInvolvement(){
+    return "Romantic Involvement";
+}
+
+function generateBigWinOrLoss(){
+    const roll = d10() + 1;
+    const even = roll % 2;
+    
+    return even ? generateLucky() : generateDisaster();
+}
+
+function generateLucky(){
+    const roll = d10() + 1;
+
+    switch (roll) {
+        case 1:
+            let friend = ``;
+            let friendRoll = d10()+1;
+            if (friendRoll <= 4) {
+                friend = `Police Department`;
+            } else if (friendRoll <= 7) {
+                friend = `District Attorneys Office`;
+            } else if (friendRoll <= 10) {
+                friend = `Mayors Office`;
+            } else {
+                return ``;
+            }
+            
+            return `You made a powerful connection in the ${friend}`;
+        case 2:
+            return `You received ${(d10()+1)*100} eurodollars from a Financial Windfall`;
+        case 3:
+            return `You received ${(d10()+1)*100} eurodollars from a Big Score on a job`;
+        case 4:
+            return `You Found a Sensei. Begin at +2 or add +1 to a Martial Arts skill`;
+        case 5:
+            return `You Found a Teacher. Begin at +2 or add +1 to any INT based skill`;
+        case 6:
+            return `A powerful corporate exec now owes you a favor`;
+        case 7:
+            return `You made friends with local Nomads. You can call them for one Favor a month, equivalent to a Family Special Ability of +2`;
+        case 8:
+            return `You made a friend on the police force. You can use him for insider info equivalent to a Streetwise level of +2 on any police related situation`;
+        case 9:
+            return `A local BoosterGang likes you....somehow. You can call upon them for a favour once a month,  equivalent to a Family Special Ability of +2. Be careful.`;
+        case 10:
+            return `You found a Combat Teacher. +1 to any weapon skill (except Martial Arts or Brawling) or begin a new Combat Skill at +2`;
+        default:
+            return `<strong>Lucky [${roll}]</strong>: Nothing of note happens.`;
+    }
+}
+
+function generateDisaster(){
+    let roll = d10() + 1;
+    let secondaryRoll = d10() +1;
+    let secondaryText = ``;
+
+    switch (roll) {
+        case 1:
+            return `You lost ${(d10()+1)*100} eurodollars. If you can't pay this now, it becomes debt`;
+        case 2:
+            return `You were imprisoned or held hostage for ${d10()+1} month(s)`;
+        case 3:
+            return `Contracted either an illness, or a drug habit. Permanently lose 1 REF`;
+        case 4:
+            if (secondaryRoll <= 3) {
+                secondaryText = `are being blackmailed`;
+            } else if (secondaryRoll <= 7) {
+                secondaryText = `a secret was exposed`;
+            } else if (secondaryRoll <= 10) {
+                secondaryText = `it was a close friend, or romantic partner`;
+            } else {
+                return ``;
+            }
+            
+            return `You were Betrayed and ${secondaryText}`;
+        case 5:
+            if (secondaryRoll <= 4) {
+                secondaryText = `suffered a horrible disfigurement (-4 ATT Permanently)`;
+            } else if (secondaryRoll <= 6) {
+                secondaryText = `were hospitalised for ${d10()+1} months`;
+            } else if (secondaryRoll <= 8) {
+                secondaryText = `lost ${d10()+1} months of memory from that year`;
+            } else if (secondaryRoll <= 10) {
+                secondaryText = `have constant nightmares about it (8/10 chance per night)`;
+            } else {
+                return ``;
+            }
+
+            return `You were in a serious accident and ${secondaryText}`;
+        case 6:
+            if (secondaryRoll <= 5) {
+                secondaryText = ` in an accident`;
+            } else if (secondaryRoll <= 8) {
+                secondaryText = `, murdered by unknown parties`;
+            } else if (secondaryRoll <= 10) {
+                secondaryText = `, murdered, and you know the culprit`;
+            } else {
+                return ``;
+            }
+            return `Your lover, friend or relative was killed${secondaryText}`;
+        case 7:
+            if (secondaryRoll <= 3) {
+                secondaryText = `theft`;
+            } else if (secondaryRoll <= 5) {
+                secondaryText = `cowardice`;
+            } else if (secondaryRoll <= 8) {
+                secondaryText = `murder`;
+            } else if (secondaryRoll <= 9) {
+                secondaryText = `rape`;
+            } else if (secondaryRoll <= 10) {
+                secondaryText = `lying or betrayal`;
+            }else {
+                return ``;
+            }
+            return `You were set up, accused of ${secondaryText}`;
+        case 8:
+            if (secondaryRoll <= 3) {
+                secondaryText = `Only a few cops want you`;
+            } else if (secondaryRoll <= 6) {
+                secondaryText = `The entire local force is after you`;
+            } else if (secondaryRoll <= 8) {
+                secondaryText = `The State Police/Militia are after you`;
+            } else if (secondaryRoll <= 10) {
+                secondaryText = `The FBI or an equivalent national force are after you`;
+            } else {
+                return ``;
+            }
+            return `You are hunted by the law, for crimes you may or may not have done. ${secondaryText}`;
+        case 9:
+            if (secondaryRoll <= 3) {
+                secondaryText = `from a small local firm`;
+            } else if (secondaryRoll <= 6) {
+                secondaryText = `from a medium sized, statewide, corp`;
+            } else if (secondaryRoll <= 8) {
+                secondaryText = `from a big national corp`;
+            } else if (secondaryRoll <= 10) {
+                secondaryText = `from a huge multinational corp`;
+            } else {
+                return ``;
+            }
+            return `You've angered some corporate honcho ${secondaryText}`;
+        case 10:
+            if (secondaryRoll <= 3) {
+                secondaryText = `serious physical breakdown, lose 1 REF permanently`;
+            } else if (secondaryRoll <= 7) {
+                secondaryText = `serious mental breakdown, lose 1 CL permanently`;
+            } else if (secondaryRoll <= 10) {
+                secondaryText = `serious psychotic episode, lose 1 CL and 1 REF permanently`;
+            } else {
+                return ``;
+            }
+            return `You've had a ${secondaryText}`;
+        default:
+            return ``
+    }
+}
+
 document.getElementById("rollBtn").addEventListener("click", () => {
     let sectionExists = document.getElementById("Style"); 
     
     if (!sectionExists) {
-        document.getElementById("wrapper").appendChild(generateStyleAndOrigins());
-        document.getElementById("wrapper").appendChild(generateFamilyBackground());
-        document.getElementById("wrapper").appendChild(generateMotivations());
+        generateNewLifePath()
+        
     }else{
-        document.getElementById("wrapper").removeChild(document.getElementById("Style"))
-        document.getElementById("wrapper").removeChild(document.getElementById("Family"))
-        document.getElementById("wrapper").removeChild(document.getElementById("Motivations"))
-        document.getElementById("wrapper").appendChild(generateStyleAndOrigins());
-        document.getElementById("wrapper").appendChild(generateFamilyBackground());
-        document.getElementById("wrapper").appendChild(generateMotivations());
+        document.getElementById("wrapper").removeChild(document.getElementById("Style"));
+        document.getElementById("wrapper").removeChild(document.getElementById("Family"));
+        document.getElementById("wrapper").removeChild(document.getElementById("Motivations"));
+        document.getElementById("wrapper").removeChild(document.getElementById("LifeEvents"));
+        generateNewLifePath();
     }
 });
+
+function generateNewLifePath(){
+    document.getElementById("wrapper").appendChild(generateStyleAndOrigins());
+    document.getElementById("wrapper").appendChild(generateFamilyBackground());
+    document.getElementById("wrapper").appendChild(generateMotivations());
+    document.getElementById("wrapper").appendChild(generateLifeEvents());
+}
