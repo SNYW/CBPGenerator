@@ -316,9 +316,9 @@ function generateLifeEvents(){
 
     let returnHTML = `<div class="sectionTitleParent"><h2 class="sectionTitle">Life Events</h2></div>`;
 
-    returnHTML += `<p class="pFlex"><strong>Age:</strong> ${actualAge}</p>`;
+    returnHTML += `<p class="pFlex"><strong class="strongColumn">Age:</strong> ${actualAge}</p>`;
 
-    returnHTML += `<h3>Yearly Events</h3>`;
+    returnHTML += `<h3 style="margin-left: -2.3%">Life Events by Year</h3>`;
     let list = document.createElement("ul");
     
     for (let i = 1; i < ageRolls+1; i++){
