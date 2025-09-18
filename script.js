@@ -56,16 +56,17 @@ function d10() {
 }
 
 function generateLifepath() {
-    const parentStatusRoll = d10();
+    const familyRankingRoll = d10();
+    const parentsStatusRoll = d10();
     const familyTragedyRoll = d10();
     const familyStatusRoll = d10();
 
-    return rollFamilyRanking();
-}
-
-function rollFamilyRanking(){
-    const familyRankingRoll = d10();
-    return `<p><strong>Family Ranking: [${familyRankingRoll}]</strong> ${familyRanking[familyRankingRoll]}</p>`;
+    return `
+        <p><strong>Family Ranking [${familyRankingRoll + 1}]</strong>: ${familyRanking[familyRankingRoll]}</p>
+        <p><strong>Parents' Status [${parentsStatusRoll + 1}]</strong>: ${parentsStatus[parentsStatusRoll]}</p>
+        <p><strong>Family Tragedy [${familyTragedyRoll + 1}]</strong>: ${familyTragedy[familyTragedyRoll]}</p>
+        <p><strong>Family Status [${familyStatusRoll + 1}]</strong>: ${familyStatus[familyStatusRoll]}</p>
+    `;
 }
 
 document.getElementById("rollBtn").addEventListener("click", () => {
